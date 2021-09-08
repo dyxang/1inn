@@ -131,7 +131,7 @@
 <!-- more -->
 <p>国际节点我选的是 Vercel ，通过导入 Github的仓库来部署网站，与仓库同步更新，与 Github Pages不同，有世界各地的 CDN 支持，包括亚洲也很有几个CDN边缘服务器（台湾、香港、日本、韩国等）,速度没得说。<br>
 国内节点我选的是 Gitee，虽然 Coding 挺不错（属于腾讯），但是提供的二级域名是随机的长字符串，不方便记忆且我自己没有买域名的打算，再加上双方的免费版我测出的 ip不同，码云的来自上海，Coding 来自新加坡<br>
-我目前正在用的博客系统是 Gridea，不支持直接部署到Gitee，也不支持同时部署到两个平台，最关键的一点是 Gridea 要填自己的博客网址，也就是说 我同步到 Vercel（1inn.vercel.app）上后，还得本地把网站文件中所有<code>1inn.vercel.app</code>替换成<code>dyxang.gitee.io</code>，再同步到 Gitee（dyxang.gitee.io）。所以在一次次这种繁琐的操作后，我烦躁了，然后花了半天时间完成解决办法。<br>
+我目前正在用的博客系统是 Gridea，不支持直接部署到Gitee，也不支持同时部署到两个平台，最关键的一点是 Gridea 要填自己的博客网址，也就是说 我同步到 Vercel（www.1inn.top）上后，还得本地把网站文件中所有<code>www.1inn.top</code>替换成<code>dyxang.gitee.io</code>，再同步到 Gitee（dyxang.gitee.io）。所以在一次次这种繁琐的操作后，我烦躁了，然后花了半天时间完成解决办法。<br>
 具体流程如下<br>
 <img src="https://pic.imgdb.cn/item/5fa653d41cd1bbb86be49331.png" alt="" loading="lazy"><br>
 我的 Github Action 文件：</p>
@@ -147,7 +147,7 @@ jobs:
       - name: Find and Replace
         uses: jacobtomlinson/gha-find-replace@master
         with:
-          find: &quot;1inn.vercel.app&quot;
+          find: &quot;www.1inn.top&quot;
           replace: &quot;dyxang.gitee.io&quot;
           //这里使用的是全文替换的 Action
   job2:
@@ -178,7 +178,7 @@ jobs:
         uses: jacobtomlinson/gha-find-replace@master
         with:
           find: &quot;dyxang.gitee.io&quot;
-          replace: &quot;1inn.vercel.app&quot;
+          replace: &quot;www.1inn.top&quot;
 //把 Github 仓库文件还原，让 Vercel 部署时正常使用
 </code></pre>
 
@@ -242,7 +242,7 @@ function loadComments() {
 function newWaline() {
   new Waline({
       el: '#talkmoe',
-      serverURL: 'https://talk-pi.vercel.app',
+      serverURL: 'https://p1nlun.1inn.top',
       placeholder:'Hello!被回复后若没有收到评论通知，请查看邮箱垃圾邮件分类',
       emoji: [
     'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/qq',
